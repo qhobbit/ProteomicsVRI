@@ -14,7 +14,7 @@ samples_long = data_AD.loc[mask_samples & mask_assays].copy()
 
 npx_matrix = samples_long.pivot(
     index="SampleID",
-    columns="OlinkID",
+    columns="Assay",
     values="NPX"
 )
 
