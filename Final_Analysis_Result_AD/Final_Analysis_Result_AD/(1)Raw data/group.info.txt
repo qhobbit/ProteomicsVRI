@@ -1,0 +1,4 @@
+Sample Group	# of samples
+AD	5
+Ctrl-S	5
+L	2

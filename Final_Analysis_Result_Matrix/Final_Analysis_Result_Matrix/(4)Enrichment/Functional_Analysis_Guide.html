@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Olink Functional Analysis (Pathway Enrichment) Guide</title>
+  <link rel="stylesheet" href="https://download.macrogen.com/~seqdata/Affy_exp/HTML2/default.css" type="text/css">
+</head>
+<body bgcolor="FFFFFF">
+  <div id="wrapper">
+    <div id="header">
+      <div class="title-sec">
+        <div class="title-inner-sec">
+          <a href="#"><img src="https://download.macrogen.com/~seqdata/Affy_exp/HTML2/images/logo.png" alt="MACROGEN" /></a>
+          <h1>Olink Functional Analysis (Pathway Enrichment) Guide</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid main-container">
+      <div class="row-fluid">
+        <div class="toc-content col-xs-12 col-sm-12 col-md-12">
+          <div class="paddingB30"></div>
+          <div id="container" class="paddingB10">
+
+            <div id="introduction" class="section level1">
+              <h1 class="title">Functional Analysis with Olink</h1>
+
+              <p class="title-bull"> The functional analysis of Olink performs gene set enrichment analysis using MSigDB, Reactome, KEGG, or GO. <br>
+                Two complementary approaches were applied: Gene Set Enrichment Analysis (GSEA) and Over-Representation Analysis (ORA).</p>
+
+              <h2 class="title-mid">About the Methods</h2>
+              <ul class="con-sec">
+                <li>GSEA (Gene Set Enrichment Analysis) : <br>
+                	This method ranks all measured proteins based on their effect size (e.g., fold-change) and identifies pathways that are enriched toward the top or bottom of the ranked list.</li>
+                <li>ORA (Over-Representation Analysis) : <br>
+                	This approach focuses on a set of proteins that passed a significance threshold (e.g., adjusted p-value) and evaluates whether any biological pathways are statistically over-represented in that set.</li>
+              </ul>
+
+              <h2 class="title-mid">Important Considerations</h2>
+              <ul class="con-sec">
+               	<li>The Olink panels are designed to target specific biological themes (e.g., inflammation, cardiometabolic processes), and do not cover the full human proteome.<br>
+              		As such, pathway interpretation should always be made in the context of the proteins that were measured.</li>
+                <li>For example, when only the Inflammation panel is used, results will be biased toward immune-related pathways.<br>
+                	This is expected and helps narrow biological interpretation to the relevant context.</li>
+              </ul>
+
+              <h2 class="title-mid">Recommended Usage</h2>
+              <ul class="con-sec">
+                <li>Results are most robust when using broad protein coverage, such as the Olink Explore platform or multiple Target 96 panels.</li>
+                <li>For smaller protein lists, manual biological interpretation (e.g., keyword-based annotation) may provide more targeted insights than statistical enrichment alone.</li>
+              </ul>
+
+              <h2 class="title-mid">Result Files</h2>
+              <ul class="con-sec">
+              	<li>The results of the functional analysis are summarized in the Excel file named [Comparison]_enrichment_analysis.xlsx,<br>
+              		which includes two sheets: gsea_results and ora_results.</li>
+                <li>For both GSEA and ORA, we have visualized the top 30 enriched functional terms using bar plots and heatmaps to provide a clearer overview of the most relevant pathways identified in the analysis.<br>
+                	([ORA|GSEA]_[Comparison]_heatmap.png and [ORA|GSEA]_[Comparison]_barplot.png)</li>
+                <li>Column information of each sheet is summarized in the table below.</li>
+								<li>Columns for ORA_results include:</li>
+							<div class="t-cs-li">
+              <table class="tb">
+                <tr><th>Column</th><th>Description</th></tr>
+                <tr><td>ID</td><td>Pathway ID from MSigDB</td></tr>
+                <tr><td>Description</td><td>Description of Pathway from MSigDB</td></tr>
+                <tr><td>GeneRatio</td><td>Ratio of input proteins in the pathway</td></tr>
+                <tr><td>BgRatio</td><td>Ratio of background genes in the pathway</td></tr>
+                <tr><td>pvalue</td><td>Raw enrichment p-value</td></tr>
+                <tr><td>p.adjust</td><td>Adjusted p-value (Benjamini-Hochberg)</td></tr>
+                <tr><td>qvalue</td><td>False discovery rate, the estimated probability that the normalized enrichment score represents a false positive finding</td></tr>
+                <tr><td>geneID</td><td>List of enriched genes (Gene Symbols) annotated in a term delimited by "/"</td></tr>
+                <tr><td>Count</td><td>Number of input proteins that are annotated in a term</td></tr>
+              </table>
+            	</div>
+								<li>Columns for GSEA_results include:</li>
+							<div class="t-cs-li">
+              <table class="tb">
+                <tr><th>Column</th><th>Description</th></tr>
+                <tr><td>ID</td><td>Pathway ID from MSigDB</td></tr>
+                <tr><td>Description</td><td>Description of Pathway from MSigDB</td></tr>
+                <tr><td>setSize</td><td>Number of input proteins that are annotated in a term</td></tr>
+                <tr><td>enrichmentScore</td><td>Enrichment score, degree to which a gene set is over-represented at the top or bottom of the ranked list of genes</td></tr>
+                <tr><td>NES</td><td>Normalized Enrichment Score, normalized to account for differences in gene set size and in correlations between gene sets and expression data sets. NES can be used to compare analysis results across gene sets.</td></tr>
+                <tr><td>pvalue</td><td>Raw enrichment p-value</td></tr>
+                <tr><td>p.adjust</td><td>Adjusted p-value (Benjamini-Hochberg)</td></tr>
+                <tr><td>qvalue</td><td>False discovery rate, the estimated probability that the normalized enrichment score represents a false positive finding</td></tr>
+                <tr><td>rank</td><td>the position in the ranked list where the maximum enrichment score occurred</td></tr>
+                <tr><td>leading_edge</td><td>Tags, list, and signal strength; Tags gives an indication of the percentage of genes contributing to the enrichment score. List gives an indication of where in the list the enrichment score is obtained. Signal represents the enrichment signal strength and combines the tag and list.</td></tr>
+                <tr><td>core_enrichment</td><td>Core enriched proteins (Gene Symbols) annotated in a term delimited by "/"</td></tr>
+              </table>
+            	</div>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+		<!--footer-->
+		<footer id="footer" class="footer_style">
+			<div class="container">
+				<font color="black">
+					<h4>If you have any question, please send an email (<a href="mailto:array@macrogen.com" style="color:#003ea5;">array@macrogen.com</a>) or contact representative.</h4>
+				</font>
+			</div>
+			<div class="container">
+				<div class="left">
+					<div class="footer-box">
+						<h5>MACROGEN Inc.</h5>
+						<ul>
+							<li>[08511] 1001, 10F, 254 Beotkkot-ro, Geumcheon-gu, Seoul,</li>
+							<li>Republic of Korea (Gasan-dong, World Meridian 1)</li>
+							<li>T. +82-2-2180-7000</li>
+							<li>E1. <a href="mailto:array@macrogen.com">array@macrogen.com</a></li>
+							<li>E2. <a href="mailto:ngs@macrogen.com">ngs@macrogen.com</a> (Overseas)</li>
+							<li>E3. <a href="mailto:ngskr@macrogen.com">ngskr@macrogen.com</a> (Republic of Korea)</li>
+							<li>Web. <a href="http://www.macrogen.com" target="_blank">http://www.macrogen.com</a></li>
+							<li>LIMS. <a href="http://dna.macrogen.com" target="_blank">http://dna.macrogen.com</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="right">
+					<div class="col-sm-3">
+						<h5>PSOMAGEN</h5>
+						<ul>
+							<li>1330 Piccard Drive, Suite 103, Rockville, MD 20850,</li>
+							<li>United States</li>
+							<li>T. +1-301-251-1007</li>
+							<li>E. <a href="mailto:inquiry@psomagen.com">inquiry@psomagen.com</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-3">
+						<h5>MACROGEN EUROPE</h5>
+						<ul>
+							<li>Meibergdreef 57, 1105 BA, Amsterdam,</li>
+							<li>the Netherlands</li>
+							<li>T. +31-20-333-7563</li>
+							<li>E. <a href="mailto:ngs@macrogen.eu">ngs@macrogen.eu</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-3">
+						<h5>MACROGEN JAPAN</h5>
+						<ul>
+							<li>16F Time24 Building, 2-4-32 Aomi, Koto-ku,</li>
+							<li>Tokyo 135-0064, Japan</li>
+							<li>T. +81-3-5962-1124</li>
+							<li>E. <a href="mailto:ngs@macrogen-japan.co.jp">ngs@macrogen-japan.co.jp</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-3">
+						<h5>MACROGEN SINGAPORE</h5>
+						<ul>
+							<li>3 Biopolis Drive #05-18, Synapse,</li>
+							<li>Singapore 138623</li>
+							<li>T. +65-6339-0927</li>
+							<li>E. <a href="mailto:info-sg@macrogen.com">info-sg@macrogen.com</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-3">
+						<h5>MACROGEN SPAIN</h5>
+						<ul>
+							<li>Av. Sur del Aeropuerto de Barajas, 28, Office B-2,</li>
+							<li>28042 Madrid, Spain</li>
+							<li>T. +34-911-138-378</li>
+							<li>E. <a href="mailto:info-spain@macrogen.com">info-spain@macrogen.com</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<div class="title-sec">
+			<div class="title-inner-sec">
+				<a href="#"><img src="https://download.macrogen.com/~seqdata/SNP/HTML/images/logo.png" alt="MACROGEN" /></a>
+				<h1></h1>
+			</div>
+		</div>
+		</div>
+	</body>
+</html>

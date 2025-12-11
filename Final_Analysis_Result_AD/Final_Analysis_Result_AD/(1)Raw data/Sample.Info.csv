@@ -1,0 +1,13 @@
+SampleID,Sample.Group,PlateID,AD-Ctrl-S,AD-S_1pg_vs_Ctrl-S_1pg,AD-S_5pg_vs_Ctrl-S_5pg,AD-S_10pg_vs_Ctrl-S_10pg,AD_20pg_vs_Ctrl-S_20pg,AD-S_40pg_vs_Ctrl-S_40pg,Ctrl-S_vs_L
+AD-S_1pg,AD,Lib,AD,AD-S_1pg,--,--,--,--,--
+AD-S_5pg,AD,Lib,AD,--,AD-S_5pg,--,--,--,--
+AD-S_10pg,AD,Lib,AD,--,--,AD-S_10pg,--,--,--
+AD_20pg,AD,Lib,AD,--,--,--,AD_20pg,--,--
+AD-S_40pg,AD,Lib,AD,--,--,--,--,AD-S_40pg,--
+Ctrl-S_1pg,Ctrl-S,Lib,Ctrl-S,Ctrl-S_1pg,--,--,--,--,Ctrl-S
+Ctrl-S_5pg,Ctrl-S,Lib,Ctrl-S,--,Ctrl-S_5pg,--,--,--,Ctrl-S
+Ctrl-S_10pg,Ctrl-S,Lib,Ctrl-S,--,--,Ctrl-S_10pg,--,--,Ctrl-S
+Ctrl-S_20pg,Ctrl-S,Lib,Ctrl-S,--,--,--,Ctrl-S_20pg,--,Ctrl-S
+Ctrl-S_40pg,Ctrl-S,Lib,Ctrl-S,--,--,--,--,Ctrl-S_40pg,Ctrl-S
+L-1,L,Lib,--,--,--,--,--,--,L
+L-2,L,Lib,--,--,--,--,--,--,L

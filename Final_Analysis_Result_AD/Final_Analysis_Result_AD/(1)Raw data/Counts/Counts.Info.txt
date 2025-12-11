@@ -1,0 +1,2 @@
+LibName	CountsDir
+Lib	20251113_22F5LCLT1_1_counts/

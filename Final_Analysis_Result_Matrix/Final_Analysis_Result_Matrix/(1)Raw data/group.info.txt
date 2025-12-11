@@ -1,0 +1,3 @@
+Sample Group	# of samples
+MAT_WT	5
+OA-WT	2
