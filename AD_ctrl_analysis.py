@@ -78,8 +78,43 @@ dep_flags = pd.DataFrame(
         for name, df in dep_results_fc.items()
     }
 )
+
 dep_flags["n_comparisons"] = dep_flags.sum(axis=1)
-dep_flags.to_csv("DEPs_overlap_fc_only_flags.csv")
+# dep_flags.to_csv("DEPs_overlap_fc_only_flags.csv")
+# Fix the order of comparisons (rows)
+comparison_order = list(comparisons_fc_only.keys())
+
+# Fix the order of assays (columns) – should be 1034
+assay_order = npx.columns.to_list()
+print(assay_order)
+# Stack fold-change vectors row-wise
+fc_matrix = np.vstack([
+    dep_results_fc[name]
+        .set_index("Assay")
+        .loc[assay_order, "FoldChange"]
+        .values
+    for name in comparison_order
+])
+
+print("Fold-change matrix shape:", fc_matrix.shape)  # should be (5, 1034)
+
+# Optional: log2 transform so colours are symmetric around 0
+log2_fc_matrix = np.log2(fc_matrix)
+
+plt.figure(figsize=(24, 4))
+ax = sns.heatmap(
+    log2_fc_matrix,
+    cmap="bwr",          # red/blue centred at 0
+    center=0,            # log2(FC) = 0  => FC = 1 (no change)
+    cbar_kws={"label": "log2(Fold change AD/Ctrl)"},
+    xticklabels=False,
+    yticklabels=comparison_order
+)
+ax.set_xlabel("Assays")
+ax.set_ylabel("Comparisons")
+ax.set_title("Fold change heatmap (5 x 1034)")
+plt.tight_layout()
+plt.show()
 
 
 
@@ -168,3 +203,5 @@ deps_df_pooled = pd.DataFrame({
 
 deps_only_pooled = deps_df_pooled[deps_df_pooled["DEP"]].sort_values("p_value")
 print(deps_only_pooled.head())
+
+
